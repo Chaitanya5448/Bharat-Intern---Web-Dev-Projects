@@ -1,1 +1,90 @@
+HTML :- 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Temperature Converter</h1>
+        <input type="number" id="input" placeholder="Enter temperature">
+        <button onclick="convert()">Convert</button>
+        <div id="result"></div>
+    </div>
+
+    <script src="Script.js"></script>
+
+</body>
+</html>
+
+CSS :-
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h1 {
+    color: #007BFF;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#result {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+JAVASCRIPT :-
+
+function convert() {
+    const input = document.getElementById("input").value;
+
+    if (isNaN(input)) {
+        alert("Please enter a valid number");
+        return;
+    }
+
+    const celsius = (input - 32) * 5 / 9;
+    const fahrenheit = (input * 9 / 5) + 32;
+
+    document.getElementById("result").innerHTML = `
+        ${input}&#176;F is ${celsius.toFixed(2)}&#176;C<br>
+        ${input}&#176;C is ${fahrenheit.toFixed(2)}&#176;F
+    `;
+}
